@@ -1,0 +1,36 @@
+version: '3.9'
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: wisechecks
+      POSTGRES_USER: wise
+      POSTGRES_PASSWORD: wise
+    ports: ['5432:5432']
+    volumes: [db_data:/var/lib/postgresql/data]
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ':9001'
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports: ['9000:9000','9001:9001']
+    volumes: [minio_data:/data]
+  backend:
+    build: ../backend
+    environment:
+      DATABASE_URL: postgresql+psycopg2://wise:wise@db:5432/wisechecks
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    depends_on: [db, minio]
+    ports: ['8000:8000']
+  frontend:
+    build: ../frontend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000/api
+    depends_on: [backend]
+    ports: ['3000:3000']
+volumes:
+  db_data:
+  minio_data:
