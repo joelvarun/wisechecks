@@ -43,3 +43,12 @@ PYTHONPATH=. python ../scripts/seed_demo.py
 
 ## Auth/RBAC
 Scaffolded role model (`Admin`, `Reviewer`, `Viewer`) and JWT utilities included. Endpoints accept `actor_id` for MVP wiring and can be upgraded to strict auth middleware.
+
+## Database Choice (Graph DB vs Relational)
+- Current backend uses **PostgreSQL + pgvector** as the system of record and retrieval store.
+- We are **not** using a graph database (e.g., Neo4j) in this MVP.
+- Relationship traversal (event -> evidence -> page -> document) is handled with normalized relational schema and joins.
+
+## Agentic Orchestration
+- Added a **LangGraph**-based chat flow (`retrieve -> validate evidence -> answer/refuse`) to make Q&A behavior more agentic while preserving strict citation requirements.
+- The graph always refuses when no evidence is retrieved, supporting no-hallucination constraints.

@@ -1,8 +1,14 @@
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
+from app.services.agentic_chat import run_agentic_chat
+
 
 def answer_question(db: Session, case_id: int, question: str):
+    return run_agentic_chat(db, case_id, question)
+
+
+def answer_question_legacy(db: Session, case_id: int, question: str):
     rows = db.execute(text('''
       SELECT d.filename, p.page_number, p.ocr_text, p.document_id
       FROM pages p join documents d on p.document_id=d.id
