@@ -1,0 +1,72 @@
+[
+  {
+    "doc_id": "doc_001",
+    "prompt_id": "supplier_extraction",
+    "instruction": "Extract supplier name, supplier location and contract value",
+    "pdf_text": "Supplier: Siemens Energy AG located in Munich Germany. Contract value is 5 million USD.",
+    "relevant_chunks": [
+      "Supplier: Siemens Energy AG located in Munich Germany"
+    ],
+    "expected_output": {
+      "supplier_name": "Siemens Energy AG",
+      "supplier_location": "Munich Germany",
+      "contract_value": "5 million USD"
+    }
+  },
+  {
+    "doc_id": "doc_002",
+    "prompt_id": "supplier_extraction",
+    "instruction": "Extract supplier name, supplier location and contract value",
+    "pdf_text": "The agreement is with ABB Ltd, based in Zurich Switzerland, with a total value of 12.4 million EUR.",
+    "relevant_chunks": [
+      "agreement is with ABB Ltd, based in Zurich Switzerland"
+    ],
+    "expected_output": {
+      "supplier_name": "ABB Ltd",
+      "supplier_location": "Zurich Switzerland",
+      "contract_value": "12.4 million EUR"
+    }
+  },
+  {
+    "doc_id": "doc_003",
+    "prompt_id": "supplier_extraction",
+    "instruction": "Extract supplier name, supplier location and contract value",
+    "pdf_text": "Vendor: Hitachi Rail S.p.A., Napoli Italy. Contract value: 8,750,000 USD.",
+    "relevant_chunks": [
+      "Vendor: Hitachi Rail S.p.A., Napoli Italy"
+    ],
+    "expected_output": {
+      "supplier_name": "Hitachi Rail S.p.A.",
+      "supplier_location": "Napoli Italy",
+      "contract_value": "8,750,000 USD"
+    }
+  },
+  {
+    "doc_id": "doc_004",
+    "prompt_id": "supplier_extraction",
+    "instruction": "Extract supplier name, supplier location and contract value",
+    "pdf_text": "Contract signed with Schneider Electric SE from Rueil-Malmaison France for 3.2 million USD.",
+    "relevant_chunks": [
+      "Schneider Electric SE from Rueil-Malmaison France"
+    ],
+    "expected_output": {
+      "supplier_name": "Schneider Electric SE",
+      "supplier_location": "Rueil-Malmaison France",
+      "contract_value": "3.2 million USD"
+    }
+  },
+  {
+    "doc_id": "doc_005",
+    "prompt_id": "supplier_extraction",
+    "instruction": "Extract supplier name, supplier location and contract value",
+    "pdf_text": "General Electric Power in Boston USA will deliver services under a contract worth 15 million USD.",
+    "relevant_chunks": [
+      "General Electric Power in Boston USA"
+    ],
+    "expected_output": {
+      "supplier_name": "General Electric Power",
+      "supplier_location": "Boston USA",
+      "contract_value": "15 million USD"
+    }
+  }
+]
