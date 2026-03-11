@@ -1,0 +1,9 @@
+ragas
+deepeval
+pandas
+datasets
+bert-score
+rouge-score
+sentence-transformers
+openai
+pyyaml

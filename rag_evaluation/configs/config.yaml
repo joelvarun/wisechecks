@@ -1,0 +1,3 @@
+embedding_model: text-embedding-3-large
+retrieval_top_k: 18
+bert_score_threshold: 0.85
